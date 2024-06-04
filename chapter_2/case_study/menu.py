@@ -18,9 +18,10 @@ class Menu:
         print("""
         Notebook Menu
         1. Show all Notes
-        2. Search Notes
-        3. Modify Note
-        4. Quit
+        2. Search Note
+        3. Add Note
+        4. Modify Note
+        5. Quit
         """)
     def run(self):
         '''Display the menu and resond to choices.'''
@@ -33,14 +34,24 @@ class Menu:
             else:
                 print("{0} is not a valid choice.".format(choice))
     
+    def show_notes(self, notes=None):
+        if not notes:
+            notes = self.notebook.notes
+        for note in notes:
+            print("{0}: {1}\n{2}".format(note.id, note.tags, note.memo))
+            
     def search_notes(self):
         filter = input("Search for: ")
         notes = self.notebook.search(filter)
-        self.show_notes(notes)
+        if notes:
+            self.show_notes(notes)
+        else:
+            print("No Note found.")
 
     def add_note(self):
         memo = input("Enter a memo: ")
-        self.notebook.new_note(memo)
+        tags = input("Enter tags: ")
+        self.notebook.new_note(memo, tags)
         print("Your note has been added.")
     
     def modify_note(self):
