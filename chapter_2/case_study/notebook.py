@@ -62,3 +62,12 @@ class Notebook:
         
         return [note for note in self.notes if note.match(filter)]
     
+    # I created another function to modify memo and tag together
+    def modify_note(self, note_id, memo, tags=''):
+        '''Find the note with given id and changes it's memo and tags to the given value.'''
+        note = self._find_note(note_id)
+        if note:
+            note.memo = memo
+            note.tags = tags
+            return True
+        return False

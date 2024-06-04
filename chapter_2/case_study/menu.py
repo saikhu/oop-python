@@ -58,10 +58,16 @@ class Menu:
         id = input("Enter a note id: ")
         memo = input("Enter a memo: ")
         tags = input("Enter tags: ")
+
         if memo:
-            self.notebook.modify_memo(id, memo)
-        if tags:
-            self.notebook.modify_tags(id, tags)
+            # Adition from myself book did do that.
+            modified = self.notebook.modify_note(id, memo, tags)
+            if modified:
+                print("The note is successfully modified.")
+        # if memo:
+        #     self.notebook.modify_memo(id, memo)
+        # if tags:
+        #     self.notebook.modify_tags(id, tags)
         
     def quit(self):
         print("Thank you for using notebook today.")
