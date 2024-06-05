@@ -1,6 +1,6 @@
 import sys
 
-from notebook import Notebook, Note
+from .notebook import Notebook, Note
 
 class Menu:
     '''Display a menu and respond to choices when run.'''
